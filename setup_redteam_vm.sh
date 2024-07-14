@@ -20,7 +20,6 @@ git clone https://github.com/dirkjanm/PrivExchange.git /opt/PrivExchange
 git clone https://github.com/EmpireProject/Empire.git /opt/Empire
 git clone https://github.com/lgandx/Responder.git /opt/Responder
 git clone https://github.com/0x36/linEnum.git /opt/linEnum
-git clone https://github.com/s4vitar/s4vitar-scripts.git /opt/s4vitar-scripts
 
 # Instalar dependencias para las herramientas
 pip3 install -r /opt/nuclei/requirements.txt
