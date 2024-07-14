@@ -1,0 +1,23 @@
+.TH CUSTOM_FUZZING 1 "July 2024" "Version 1.0" "User Commands"
+.SH NAME
+custom_fuzzing \- Script personalizado para fuzzing
+.SH SYNOPSIS
+.B custom_fuzzing
+.RI [ opciones ] " <url> <wordlist>"
+.SH DESCRIPCIÓN
+Este script realiza un fuzzing en la URL especificada usando la wordlist proporcionada.
+
+.SH OPCIONES
+.TP
+.BI \-u ", \--url" " <url>"
+Especifica la URL objetivo para el fuzzing.
+.TP
+.BI \-w ", \--wordlist" " <wordlist>"
+Especifica la wordlist a usar para el fuzzing.
+
+.SH EJEMPLOS
+.B
+custom_fuzzing http://example.com /usr/share/wordlists/dirb/common.txt
+
+.SH AUTOR
+Desarrollado por el equipo de red teaming.
