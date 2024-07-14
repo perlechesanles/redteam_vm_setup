@@ -7,7 +7,7 @@ Este repositorio contiene scripts y manuales para configurar una máquina virtua
 ### Paso 1: Clonar el Repositorio
 
 ```bash
-git clone https://github.com/tu_usuario/redteam_vm_setup.git
+git clone https://github.com/perlechesanlres/redteam_vm_setup.git
 cd redteam_vm_setup
 ```
 
