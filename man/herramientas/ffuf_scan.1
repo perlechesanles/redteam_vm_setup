@@ -1,0 +1,23 @@
+.TH FFUF_SCAN 1 "July 2024" "Version 1.0" "User Commands"
+.SH NAME
+ffuf_scan \- Script para realizar escaneos FFUF
+.SH SYNOPSIS
+.B ffuf_scan
+.RI [ opciones ] " <url> <wordlist>"
+.SH DESCRIPCIÓN
+Este script realiza un escaneo FFUF en la URL especificada usando la wordlist proporcionada.
+
+.SH OPCIONES
+.TP
+.BI \-u ", \--url" " <url>"
+Especifica la URL objetivo para el escaneo.
+.TP
+.BI \-w ", \--wordlist" " <wordlist>"
+Especifica la wordlist a usar para el escaneo.
+
+.SH EJEMPLOS
+.B
+ffuf_scan http://example.com /usr/share/wordlists/dirb/common.txt
+
+.SH AUTOR
+Desarrollado por el equipo de red teaming.
