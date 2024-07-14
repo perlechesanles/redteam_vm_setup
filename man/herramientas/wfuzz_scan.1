@@ -1,0 +1,23 @@
+.TH WFUZZ_SCAN 1 "July 2024" "Version 1.0" "User Commands"
+.SH NAME
+wfuzz_scan \- Script para realizar escaneos Wfuzz
+.SH SYNOPSIS
+.B wfuzz_scan
+.RI [ opciones ] " <url> <wordlist>"
+.SH DESCRIPCIÓN
+Este script realiza un escaneo Wfuzz en la URL especificada usando la wordlist proporcionada.
+
+.SH OPCIONES
+.TP
+.BI \-u ", \--url" " <url>"
+Especifica la URL objetivo para el escaneo.
+.TP
+.BI \-w ", \--wordlist" " <wordlist>"
+Especifica la wordlist a usar para el escaneo.
+
+.SH EJEMPLOS
+.B
+wfuzz_scan http://example.com /usr/share/wordlists/dirb/common.txt
+
+.SH AUTOR
+Desarrollado por el equipo de red teaming.
