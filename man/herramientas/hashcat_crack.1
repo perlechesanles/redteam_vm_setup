@@ -1,0 +1,23 @@
+.TH HASHCAT_CRACK 1 "July 2024" "Version 1.0" "User Commands"
+.SH NAME
+hashcat_crack \- Script para crackear hashes con Hashcat
+.SH SYNOPSIS
+.B hashcat_crack
+.RI [ opciones ] " <hashfile> <hashtype>"
+.SH DESCRIPCIÓN
+Este script crackea hashes en el archivo especificado usando Hashcat y la wordlist rockyou.txt.
+
+.SH OPCIONES
+.TP
+.BI \-f ", \--file" " <hashfile>"
+Especifica el archivo de hashes a crackear.
+.TP
+.BI \-t ", \--type" " <hashtype>"
+Especifica el tipo de hash a crackear (por ejemplo, 1000 para NTLM).
+
+.SH EJEMPLOS
+.B
+hashcat_crack hashes.txt 1000
+
+.SH AUTOR
+Desarrollado por el equipo de red teaming.
