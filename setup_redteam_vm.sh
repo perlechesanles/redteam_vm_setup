@@ -1,48 +1,77 @@
 #!/bin/bash
 
-# Actualizar el sistema
-sudo apt update && sudo apt upgrade -y
+# Función para instalar paquetes con apt
+install_apt_packages() {
+  apt update
+  apt install -y \
+    git \
+    python3 \
+    python3-pip \
+    swig \
+    gcc \
+    libssl-dev \
+    python3-dev \
+    impacket-scripts \
+    # otros paquetes necesarios
+}
 
-# Instalar herramientas básicas
-sudo apt install -y nmap metasploit-framework nikto gobuster curl jq \
-                    python3 python3-pip virtualenv docker.io docker-compose \
-                    enum4linux sqlmap wfuzz nuclei masscan wpscan ffuf \
-                    aircrack-ng kismet reaver bluez btscanner hydra john hashcat \
-                    responder impacket veil
+# Función para instalar paquetes de Python
+install_python_packages() {
+  python3 -m pip install --upgrade pip
+  python3 -m pip install \
+    flask \
+    requests==2.18.4 \
+    impacket \
+    # otros paquetes necesarios
+}
 
-# Instalar herramientas desde repositorios específicos
-git clone https://github.com/projectdiscovery/nuclei.git /opt/nuclei
-git clone https://github.com/epi052/recon-pipeline.git /opt/recon-pipeline
-git clone https://github.com/vanhauser-thc/thc-hydra.git /opt/thc-hydra
-git clone https://github.com/SecureAuthCorp/impacket.git /opt/impacket
-git clone https://github.com/Veil-Framework/Veil.git /opt/veil
-git clone https://github.com/dirkjanm/PrivExchange.git /opt/PrivExchange
-git clone https://github.com/EmpireProject/Empire.git /opt/Empire
-git clone https://github.com/lgandx/Responder.git /opt/Responder
-git clone https://github.com/0x36/linEnum.git /opt/linEnum
+# Clonar repositorios
+clone_repositories() {
+  repos=(
+    "https://github.com/projectdiscovery/nuclei.git"
+    "https://github.com/recon-pipeline/recon-pipeline.git"
+    "https://github.com/vanhauser-thc/thc-hydra.git"
+    "https://github.com/SecureAuthCorp/impacket.git"
+    "https://github.com/Veil-Framework/Veil.git"
+    "https://github.com/dirkjanm/PrivExchange.git"
+    "https://github.com/BC-SECURITY/Empire.git"
+    "https://github.com/lgandx/Responder.git"
+    "https://github.com/rebootuser/LinEnum.git"
+  )
 
-# Instalar dependencias para las herramientas
-pip3 install -r /opt/nuclei/requirements.txt
-pip3 install -r /opt/recon-pipeline/requirements.txt
-pip3 install -r /opt/thc-hydra/requirements.txt
-pip3 install -r /opt/impacket/requirements.txt
-pip3 install -r /opt/veil/requirements.txt
-pip3 install -r /opt/PrivExchange/requirements.txt
-pip3 install -r /opt/Empire/setup/requirements.txt
-pip3 install -r /opt/Responder/requirements.txt
-pip3 install -r /opt/linEnum/requirements.txt
+  for repo in "${repos[@]}"; do
+    dir="/opt/$(basename ${repo%.git})"
+    if [ -d "$dir" ]; then
+      echo "$dir ya existe, no se clona de nuevo."
+    else
+      git clone "$repo" "$dir"
+    fi
+  done
+}
+
+# Función para manejar errores de permisos
+handle_permissions() {
+  chown -R $(whoami):$(whoami) /opt/*
+  chmod -R 755 /opt/*
+}
 
 # Crear directorio para scripts personalizados
-mkdir -p /opt/custom_scripts
+setup_custom_scripts() {
+  mkdir -p /opt/custom_scripts
+  cp ./scripts/personalizados/*.sh /opt/custom_scripts/
+  chmod +x /opt/custom_scripts/*.sh
+}
 
-# Copiar scripts personalizados al directorio
-cp scripts/personalizados/*.sh /opt/custom_scripts/
+# Función principal
+main() {
+  install_apt_packages
+  install_python_packages
+  clone_repositories
+  handle_permissions
+  setup_custom_scripts
 
-# Hacer que los scripts sean ejecutables
-chmod +x /opt/custom_scripts/*.sh
+  echo "Instalación y configuración completada."
+}
 
-# Añadir scripts personalizados al PATH
-echo 'export PATH=$PATH:/opt/custom_scripts' >> ~/.bashrc
-source ~/.bashrc
-
-echo "Instalación y configuración completada."
+# Ejecutar función principal
+main
