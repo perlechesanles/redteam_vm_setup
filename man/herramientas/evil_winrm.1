@@ -1,0 +1,26 @@
+.TH EVIL_WINRM 1 "July 2024" "Version 1.0" "User Commands"
+.SH NAME
+evil_winrm \- Script para iniciar una sesión Evil-WinRM
+.SH SYNOPSIS
+.B evil_winrm
+.RI [ opciones ] " <target> <username> <password>"
+.SH DESCRIPCIÓN
+Este script inicia una sesión Evil-WinRM en el objetivo especificado.
+
+.SH OPCIONES
+.TP
+.BI \-t ", \--target" " <target>"
+Especifica el objetivo del ataque.
+.TP
+.BI \-u ", \--username" " <username>"
+Especifica el nombre de usuario para la sesión.
+.TP
+.BI \-p ", \--password" " <password>"
+Especifica la contraseña para la sesión.
+
+.SH EJEMPLOS
+.B
+evil_winrm 192.168.1.10 administrator password123
+
+.SH AUTOR
+Desarrollado por el equipo de red teaming.
