@@ -1,0 +1,29 @@
+.TH HYDRA_ATTACK 1 "July 2024" "Version 1.0" "User Commands"
+.SH NAME
+hydra_attack \- Script para realizar ataques Hydra
+.SH SYNOPSIS
+.B hydra_attack
+.RI [ opciones ] " <target> <service> <userlist> <passlist>"
+.SH DESCRIPCIÓN
+Este script realiza un ataque Hydra en el objetivo especificado usando el servicio y las listas de usuarios y contraseñas proporcionadas.
+
+.SH OPCIONES
+.TP
+.BI \-t ", \--target" " <target>"
+Especifica el objetivo del ataque.
+.TP
+.BI \-s ", \--service" " <service>"
+Especifica el servicio a atacar.
+.TP
+.BI \-u ", \--userlist" " <userlist>"
+Especifica la lista de usuarios (por defecto: /usr/share/wordlists/metasploit/unix_users.txt).
+.TP
+.BI \-p ", \--passlist" " <passlist>"
+Especifica la lista de contraseñas (por defecto: /usr/share/wordlists/rockyou.txt).
+
+.SH EJEMPLOS
+.B
+hydra_attack 192.168.1.1 ssh /usr/share/wordlists/users.txt /usr/share/wordlists/passwords.txt
+
+.SH AUTOR
+Desarrollado por el equipo de red teaming.
