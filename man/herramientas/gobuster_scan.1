@@ -1,0 +1,23 @@
+.TH GOBUSTER_SCAN 1 "July 2024" "Version 1.0" "User Commands"
+.SH NAME
+gobuster_scan \- Script para realizar escaneos Gobuster
+.SH SYNOPSIS
+.B gobuster_scan
+.RI [ opciones ] " <target> <wordlist>"
+.SH DESCRIPCIÓN
+Este script realiza un escaneo Gobuster en el objetivo especificado usando la wordlist proporcionada.
+
+.SH OPCIONES
+.TP
+.BI \-t ", \--target" " <target>"
+Especifica el objetivo del escaneo.
+.TP
+.BI \-w ", \--wordlist" " <wordlist>"
+Especifica la wordlist a usar para el escaneo (por defecto: /usr/share/wordlists/dirb/common.txt).
+
+.SH EJEMPLOS
+.B
+gobuster_scan http://example.com /usr/share/wordlists/dirb/common.txt
+
+.SH AUTOR
+Desarrollado por el equipo de red teaming.
