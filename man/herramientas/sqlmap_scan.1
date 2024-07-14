@@ -1,0 +1,23 @@
+.TH SQLMAP_SCAN 1 "July 2024" "Version 1.0" "User Commands"
+.SH NAME
+sqlmap_scan \- Script para realizar escaneos SQLMap
+.SH SYNOPSIS
+.B sqlmap_scan
+.RI [ opciones ] " <url>"
+.SH DESCRIPCIÓN
+Este script realiza un escaneo SQLMap en la URL especificada usando las opciones proporcionadas.
+
+.SH OPCIONES
+.TP
+.BI \-u ", \--url" " <url>"
+Especifica la URL objetivo para el escaneo.
+.TP
+.BI \-o ", \--options" " <opciones>"
+Especifica las opciones de SQLMap (por defecto: --batch --level=5 --risk=3).
+
+.SH EJEMPLOS
+.B
+sqlmap_scan http://example.com
+
+.SH AUTOR
+Desarrollado por el equipo de red teaming.
